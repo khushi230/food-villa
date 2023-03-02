@@ -57,6 +57,7 @@ const Body = () => {
   return (
     <>
       <div className="search-bar">
+        <h1>test</h1>
         <input
           type="text"
           placeholder="search"
