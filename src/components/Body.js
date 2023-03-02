@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import { restaurantArray } from "../utils/constants";
-
 import Restaurant from "./Restaurant";
 import Loader from "./Loader";
 
@@ -57,7 +55,6 @@ const Body = () => {
   return (
     <>
       <div className="search-bar">
-        <h1>test</h1>
         <input
           type="text"
           placeholder="search"
