@@ -1,11 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import { IMG_CDN_URL } from "../utils/constants";
 
 const Restaurant = ({ name, cuisines, cloudinaryImageId, avgRating }) => {
   return (
-    <Link to={"/restaurant/:"} className="card">
+    <div className="card">
       <img alt="img" src={IMG_CDN_URL + cloudinaryImageId} />
       <div className="card-content">
         <h2>{name}</h2>
@@ -16,7 +15,7 @@ const Restaurant = ({ name, cuisines, cloudinaryImageId, avgRating }) => {
           <h4>{avgRating}/5</h4>
         )}
       </div>
-    </Link>
+    </div>
   );
 };
 

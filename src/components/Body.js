@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+
+import useStatus from "../hooks/useStatus";
 
 import Restaurant from "./Restaurant";
 import Loader from "./Loader";
+import Offline from "./Offline";
 
 const Body = () => {
   const [searchInput, setsearchInput] = useState("");
   const [restaurants, setRestaurants] = useState([]);
   const [filterRestaurants, setFilterRestaurants] = useState([]);
+  const isOnline = useStatus();
 
   const filterData = (searchInput) => {
     let filteredArray = restaurants;
@@ -52,7 +57,9 @@ const Body = () => {
     fetch();
   }, []);
 
-  return (
+  return !isOnline ? (
+    <Offline />
+  ) : (
     <>
       <div className="search-bar">
         <input
@@ -68,7 +75,12 @@ const Body = () => {
         <div className="body">
           <div className="restaurant-list">
             {filterRestaurants?.map((restaurant) => (
-              <Restaurant {...restaurant.data} key={restaurant.data.id} />
+              <Link
+                to={"/restaurant/" + restaurant.data.id}
+                key={restaurant.data.id}
+              >
+                <Restaurant {...restaurant.data} />
+              </Link>
             ))}
           </div>
         </div>
